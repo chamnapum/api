@@ -17,9 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/register', ['as' => 'register', 'uses' => 'RegisterController@index']);
-Route::get('/', ['as' => 'articles', 'uses' => 'ArticleController@index', 'middleware' => ['auth:api']]);
 Route::group(['namespace' => 'Articles', 'prefix' => '/articles', 'middleware' => ['auth:api','cors']], function() {
-    // Route::get('/', ['as' => 'articles', 'uses' => 'ArticleController@index']);
+    Route::get('/', ['as' => 'articles', 'uses' => 'ArticleController@index']);
     Route::put('/', ['as' => 'articles.store', 'uses' => 'ArticleController@store']);
     Route::get('/{article}', ['as' => 'articles.show', 'uses' => 'ArticleController@show']);
     Route::post('/{article}', ['as' => 'articles.update', 'uses' => 'ArticleController@update']);
