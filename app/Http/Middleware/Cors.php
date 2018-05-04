@@ -13,6 +13,9 @@ class Cors {
             if(in_array($origin, $domains)){
                 header('Access-Control-Allow-Origin: '.  $origin);
                 header('Access-Control-Allow-Headers: Origin, Content-Type');
+                header('Access-Control-Allow-Credentials: true');
+                header('Access-Control-Max-Age: 86400');
+                header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE, UPDATE');
             }
         }
         return $next($request);
