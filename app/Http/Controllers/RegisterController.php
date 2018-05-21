@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     public function index (StoreUserRequest $request) {
-	 $user = new User();
+  	     $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
@@ -20,5 +20,5 @@ class RegisterController extends Controller
 
         return Fractal::item($user, new UserTransformer);
     }
-    
+
 }
